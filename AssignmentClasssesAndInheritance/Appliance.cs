@@ -26,14 +26,14 @@ namespace AssignmentClasssesAndInheritance
         public string Type { get; set; }
         public double Wattage { get { return wattage; } }
 
-        public Appliance(string brand, string color, int itemNumber, double price, int quantity, double wattage)
+        public Appliance(int itemNumber, string brand, int quantity, double wattage, string color,  double price)
         {
-            this.brand = brand;
-            this.color = color;
             this.itemNumber = itemNumber;
-            this.price = price;
+            this.brand = brand;
             this.quantity = quantity;
             this.wattage = wattage;
+            this.color = color;       
+            this.price = price;
         }
     }
 }

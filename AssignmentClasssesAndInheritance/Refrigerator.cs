@@ -5,17 +5,36 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AssignmentClasssesAndInheritance
-{   
-    public class Refrigerator
+{
+    public class Refrigerator : Appliance
     {
-        public int ItemNumber { get; set; }
-        public string Brand { get; set; }
-        public int Quantity { get; set; }
-        public double Wattage { get; set; }
-        public string Color { get; set; }
-        public double Price { get; set; }
-        public int Doors { get; set; }
-        public double Height { get; set; }
-        public double Width { get; set; }
+        // private data
+        private int doors;
+        private double height;
+        private double width;
+
+        // public properties
+        public int Doors { get { return doors; } }
+        public double Height { get { return height; } }
+        public double Width { get { return width; } }
+
+        // constructor
+        public Refrigerator(int itemNumber, string brand, int quantity, double wattage, string color, double price, int doors, double height, double width) :
+            base(itemNumber, brand, quantity, wattage, color, price)
+        {
+            this.doors = doors;
+            this.height = height;
+            this.width = width;
+        }
+
+        // public methods
+        public void FormatForFile()
+        {
+        }
+
+        public override string ToString()
+        {
+            return "";
+        }
     }
 }
