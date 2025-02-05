@@ -84,7 +84,5 @@ namespace AssignmentClasssesAndInheritance
             }
             return list;
         }
-
-        public
     }// class
 }// namespace
