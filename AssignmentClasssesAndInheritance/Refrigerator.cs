@@ -28,13 +28,17 @@ namespace AssignmentClasssesAndInheritance
         }
 
         // public methods
-        public void FormatForFile()
-        {
-        }
-
         public override string ToString()
         {
-            return "";
+            return $"Item Number: {ItemNumber}\n" +
+                $"Brand: {Brand}\n" +
+                $"Quantity: {Quantity}\n" +
+                $"Wattage: {Wattage}\n" +
+                $"Color: {Color}\n" +
+                $"Price: {Price}\n" +
+                $"Number of Doors: {Doors}\n" +
+                $"Height: {Height}\n" +
+                $"Width: {Width}";
         }
     }
 }

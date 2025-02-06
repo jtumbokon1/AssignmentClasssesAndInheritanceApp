@@ -10,11 +10,11 @@ namespace AssignmentClasssesAndInheritance
     public abstract class ModernAppliances
     {
         // constants
-        private const string PATH = @"..\..\..\res\employees.txt";
+        private const string PATH = @"..\..\..\res\appliances.txt";
         private const char SEP = ';';
 
         // public methods
-        public static List<Appliance> ReadFromFile()
+        public static List<Appliance> ReadAppliances()
         {
             List<Appliance> list = new List<Appliance>();
             StreamReader reader = new StreamReader(PATH);
@@ -83,6 +83,21 @@ namespace AssignmentClasssesAndInheritance
                 list.Add(app);
             }
             return list;
+        }
+
+        public static void DisplayMenu()
+        {
+            Console.WriteLine($"Welcome to Modern Appliances!\n" +
+            "How may we assist you?\n" +
+            "1 - Check out appliance\n" +
+            "2 - Find appliances by brand\n" +
+            "3 - Display appliances by type\n" +
+            "4 - Produce random appliance list\n" +
+            "5 - Save & exit");
+        }
+
+        public static void Find()
+        {
         }
     }// class
 }// namespace
