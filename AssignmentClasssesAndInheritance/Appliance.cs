@@ -184,52 +184,85 @@ namespace AssignmentClasssesAndInheritance
             {
                 case "1": // Refrigerator
                     Console.WriteLine("Enter number of doors (2, 3, or 4):");
-                    string? doors = Console.ReadLine();
+                    int doors = Convert.ToInt32(Console.ReadLine());
 
-                    // Get only refrigerators
                     List<Refrigerator> refrigerators = list.OfType<Refrigerator>().ToList();
+                    List<Refrigerator> matchingRefrigerators = refrigerators.Where(r => r.Doors == doors).ToList();
 
-                    // Filter based on number of doors
-                    List<Refrigerator> matchingRef = refrigerators.Where(r => r.Doors.ToString() == doors).ToList();
-
-                    if (matchingRef.Count > 0)
+                    if (matchingRefrigerators.Count > 0)
                     {
-                        Console.WriteLine("\nMatching Refrigerators:");
-                        foreach (Refrigerator r in matchingRef)
+                        Console.WriteLine("Matching refrigerators:");
+                        foreach (Refrigerator r in matchingRefrigerators)
                         {
-                            Console.WriteLine(r);
+                            Console.WriteLine(r + "\n");
                         }
                     }
                     else
                     {
-                        Console.WriteLine("\nNo refrigerators found with " + doors + " doors.");
+                        Console.WriteLine("No refrigerators found with " + doors + " doors.");
                     }
                     break;
 
                 case "2": // Vacuum
+                    Console.WriteLine("Enter battery voltage value. 18 V (low) or 24 V (high)");
+                    int voltage = Convert.ToInt32(Console.ReadLine());
+
                     List<Vacuum> vacuums = list.OfType<Vacuum>().ToList();
-                    Console.WriteLine("\nAll Vacuums:");
-                    foreach (Vacuum v in vacuums)
+                    List<Vacuum> matchingVacuums = vacuums.Where(v => v.BatteryVoltage == voltage).ToList();
+                    
+                    if (matchingVacuums.Count > 0)
                     {
-                        Console.WriteLine(v);
+                        Console.WriteLine("Matching vacuums:");
+                        foreach (Vacuum v in matchingVacuums)
+                        {
+                            Console.WriteLine(v + "\n");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No vacuums found with " + voltage + " V battery voltage.");
                     }
                     break;
 
                 case "3": // Microwave
+                    Console.WriteLine("Room where the microwave will be installed: K (kitchen) or W (work site):");
+                    string? room = Console.ReadLine();
+
                     List<Microwave> microwaves = list.OfType<Microwave>().ToList();
-                    Console.WriteLine("\nAll Microwaves:");
-                    foreach (Microwave m in microwaves)
+                    List<Microwave> matchingMicrowaves = microwaves.Where(m => m.RoomType == room).ToList();
+
+                    if (matchingMicrowaves.Count > 0)
                     {
-                        Console.WriteLine(m);
+                        Console.WriteLine("Matching microwaves:");
+                        foreach (Microwave m in matchingMicrowaves)
+                        {
+                            Console.WriteLine(m + "\n");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No microwaves found for room type " + room + ".");
                     }
                     break;
 
                 case "4": // Dishwasher
+                    Console.WriteLine("Enter the sound rating of the dishwasher: Qt (Quitest), Qr (Quiter), Qu (Quiet) or M (Moderate):");
+                    string? sound = Console.ReadLine()?.ToLower();
+
                     List<Dishwasher> dishwashers = list.OfType<Dishwasher>().ToList();
-                    Console.WriteLine("\nAll Dishwashers:");
-                    foreach (Dishwasher d in dishwashers)
+                    List<Dishwasher> matchingDishwashers = dishwashers.Where(d => d.SoundRating.ToLower() == sound).ToList();
+
+                    if (matchingDishwashers.Count > 0)
                     {
-                        Console.WriteLine(d);
+                        Console.WriteLine("Matching dishwashers");
+                        foreach (Dishwasher d in matchingDishwashers)
+                        {
+                            Console.WriteLine(d + "\n");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No dishwashers found with sound rating " + sound + ".");
                     }
                     break;
 
@@ -237,6 +270,6 @@ namespace AssignmentClasssesAndInheritance
                     Console.WriteLine("Invalid option. Please enter a number between 1 and 4.");
                     break;
             }
-        } 
+        }
     }
 }
