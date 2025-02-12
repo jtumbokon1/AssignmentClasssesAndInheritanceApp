@@ -8,23 +8,18 @@ namespace AssignmentClasssesAndInheritance
 {
     public class Refrigerator : Appliance
     {
-        // private data
-        private int doors;
-        private double height;
-        private double width;
-
         // public properties
-        public int Doors { get { return doors; } }
-        public double Height { get { return height; } }
-        public double Width { get { return width; } }
+        public int Doors { get; set; }
+        public double Height { get; set; }
+        public double Width { get; set; }
 
         // constructor
         public Refrigerator(int itemNumber, string brand, int quantity, double wattage, string color, double price, int doors, double height, double width) :
             base(itemNumber, brand, quantity, wattage, color, price)
         {
-            this.doors = doors;
-            this.height = height;
-            this.width = width;
+            Doors = doors;
+            Height = height;
+            Width = width;
         }
 
         // public methods

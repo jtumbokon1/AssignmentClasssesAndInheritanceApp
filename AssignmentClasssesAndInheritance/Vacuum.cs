@@ -9,21 +9,16 @@ namespace AssignmentClasssesAndInheritance
 {
     public class Vacuum : Appliance
     {
-        // private data
-        private int batteryVoltage;
-        private string grade;
-
-
         // public properties
-        public int BatteryVoltage { get { return batteryVoltage; } }
-        public string Grade { get { return grade; } }
+        public int BatteryVoltage { get; set; }
+        public string Grade { get; set; }
 
         // constructor
         public Vacuum(int itemNumber, string brand, int quantity, double wattage, string color, double price, string grade, int batteryVoltage) : 
             base(itemNumber, brand, quantity, wattage, color, price)
         {
-            this.batteryVoltage = batteryVoltage;
-            this.grade = grade;
+            BatteryVoltage = batteryVoltage;
+            Grade = grade;
         }
 
         // public methods

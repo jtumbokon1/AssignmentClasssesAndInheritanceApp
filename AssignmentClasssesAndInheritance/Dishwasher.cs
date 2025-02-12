@@ -6,29 +6,19 @@ using System.Threading.Tasks;
 
 namespace AssignmentClasssesAndInheritance
 {
-    public enum SoundRatingDisplay
-    {
-        Qt,
-        Qr,
-        Qu,
-        M
-    }
     public class Dishwasher : Appliance
     {
-        // private data
-        private string feature;
-        private SoundRatingDisplay soundRating;
-
         // public properties
-        public string Feature { get { return feature; } }
-        public SoundRatingDisplay SoundRating { get { return soundRating; } }
+        public string Feature { get; set; }
+        public string SoundRating { get; set; }
+
 
         // constructor
-        public Dishwasher(int itemNumber, string brand, int quantity, double wattage, string color, double price, string feature, SoundRatingDisplay soundRating) : 
+        public Dishwasher(int itemNumber, string brand, int quantity, double wattage, string color, double price, string feature, string soundRating) : 
             base(itemNumber, brand, quantity, wattage, color, price)
         {
-            this.soundRating = soundRating;
-            this.feature = feature;
+            SoundRating = soundRating;
+            Feature = feature;
         }
 
         // public methods

@@ -6,23 +6,20 @@ using System.Threading.Tasks;
 
 namespace AssignmentClasssesAndInheritance
 {
-    public enum RoomTypeDisplay { K, W }
     public class Microwave : Appliance
     {
-        // private data
-        private double capacity;
-        private RoomTypeDisplay roomType;
-
         // public properties
-        public double Capacity { get { return capacity; } }
-        public RoomTypeDisplay RoomType { get { return roomType; } }
+        public double Capacity { get; set; }
+
+        public string RoomType { get; set; }
+
 
         // constructor
-        public Microwave(int itemNumber, string brand, int quantity, double wattage, string color, double price, double capacity, RoomTypeDisplay roomType) : 
+        public Microwave(int itemNumber, string brand, int quantity, double wattage, string color, double price, double capacity, string roomType) : 
             base(itemNumber, brand, quantity, wattage, color, price)
         {
-            this.capacity = capacity;
-            this.roomType = roomType;
+            Capacity = capacity;
+            RoomType = roomType;
         }
 
         // public methods
