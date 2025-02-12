@@ -13,7 +13,6 @@ namespace AssignmentClasssesAndInheritance
 
         public string RoomType { get; set; }
 
-
         // constructor
         public Microwave(int itemNumber, string brand, int quantity, double wattage, string color, double price, double capacity, string roomType) : 
             base(itemNumber, brand, quantity, wattage, color, price)
@@ -34,5 +33,5 @@ namespace AssignmentClasssesAndInheritance
                 $"Capacity: {Capacity}\n" +
                 $"Room Type: {RoomType}";
         }
-    }
-}
+    } // class
+} // namespace

@@ -33,5 +33,5 @@ namespace AssignmentClasssesAndInheritance
                 $"Grade: {Grade}\n" +
                 $"Battery Voltage: {BatteryVoltage}";
         }
-    }
-}
+    } // class
+} // namespace

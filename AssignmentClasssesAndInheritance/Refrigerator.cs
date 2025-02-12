@@ -35,5 +35,5 @@ namespace AssignmentClasssesAndInheritance
                 $"Height: {Height}\n" +
                 $"Width: {Width}";
         }
-    }
-}
+    } // class
+} // namespace

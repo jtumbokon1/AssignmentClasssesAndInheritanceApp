@@ -12,7 +12,6 @@ namespace AssignmentClasssesAndInheritance
         public string Feature { get; set; }
         public string SoundRating { get; set; }
 
-
         // constructor
         public Dishwasher(int itemNumber, string brand, int quantity, double wattage, string color, double price, string feature, string soundRating) : 
             base(itemNumber, brand, quantity, wattage, color, price)
@@ -33,5 +32,5 @@ namespace AssignmentClasssesAndInheritance
                 $"Feature: {Feature}\n" +
                 $"Sound Rating: {SoundRating}";
         }
-    }
-}
+    } // class
+} // namespace

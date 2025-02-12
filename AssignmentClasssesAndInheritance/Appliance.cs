@@ -54,7 +54,7 @@ namespace AssignmentClasssesAndInheritance
                 // fields [7] = Height, Batter Voltage, Room Type, Sound Rating
                 // fields [8] = Width
                 Appliance? app = null;
-                if (fields[0].StartsWith("1"))
+                if (fields[0].StartsWith("1")) // refrigerator
                 {
                     app = new Refrigerator(
                         Convert.ToInt32(fields[0]),
@@ -67,7 +67,7 @@ namespace AssignmentClasssesAndInheritance
                         Convert.ToDouble(fields[7]),
                         Convert.ToDouble(fields[8]));
                 }
-                else if (fields[0].StartsWith("2"))
+                else if (fields[0].StartsWith("2")) // vacuum
                 {
                     app = new Vacuum(
                         Convert.ToInt32(fields[0]),
@@ -79,7 +79,7 @@ namespace AssignmentClasssesAndInheritance
                         fields[6],
                         Convert.ToInt32(fields[7]));
                 }
-                else if (fields[0].StartsWith("3"))
+                else if (fields[0].StartsWith("3")) // microwave
                 {
                     app = new Microwave(
                         Convert.ToInt32(fields[0]),
@@ -91,7 +91,7 @@ namespace AssignmentClasssesAndInheritance
                         Convert.ToDouble(fields[6]),
                         fields[7]);
                 }
-                else if (fields[0].StartsWith("4") || fields[0].StartsWith("5"))
+                else if (fields[0].StartsWith("4") || fields[0].StartsWith("5")) // dishwasher
                 {
 
                     app = new Dishwasher(
@@ -106,6 +106,7 @@ namespace AssignmentClasssesAndInheritance
                 }
                 list.Add(app);
             }
+            reader.Close();
             return list;
         }
 
@@ -127,30 +128,30 @@ namespace AssignmentClasssesAndInheritance
             string? input = Console.ReadLine();
             int output = 0;
 
-            if (int.TryParse(input, out output))
+            if (int.TryParse(input, out output)) // check if input is a number
             {
 
                 List<Appliance> list = ReadAppliances();
                 Appliance? appliance = list.FirstOrDefault(a => a.ItemNumber == output);
 
-                if (appliance != null)
+                if (appliance != null) // if input matches the item number
                 {
-                    if (appliance.Quantity > 0)
+                    if (appliance.Quantity > 0) // if appliance is avaiable then check out
                     {
                         appliance.Quantity--;
                         Console.WriteLine($"Appliance \"{input}\" has been checked out.");
                     }
-                    else
+                    else // if no appliance is available
                     {
                         Console.WriteLine("The appliance is not available to be checked out.");
                     }
                 }
-                else
+                else // if input doesn't match
                 {
                     Console.WriteLine("No appliances found with that item number.");
                 }
             }
-            else
+            else // if input is a string
             {
                 Console.WriteLine("Must be a number");
             }
@@ -162,7 +163,7 @@ namespace AssignmentClasssesAndInheritance
             string? input = Console.ReadLine()?.ToLower();
             int output = 0;
 
-            if (int.TryParse(input, out output))
+            if (int.TryParse(input, out output)) // check if input is a string
             {
                 Console.WriteLine("Must be letters.");
                 return;
@@ -171,15 +172,15 @@ namespace AssignmentClasssesAndInheritance
             List<Appliance> list = ReadAppliances();
             List<Appliance> appliances = list.Where(a => a.Brand.ToLower() == input).ToList();
 
-            if (appliances.Count > 0)
+            if (appliances.Count > 0) // if input matches the brand
             {
                 Console.WriteLine("Matching appliances:");
-                foreach (Appliance a in appliances)
+                foreach (Appliance a in appliances) // display all matching appliances
                 {
                     Console.WriteLine(a + "\n");
                 }
             }
-            else
+            else // if input doesn't match
             {
                 Console.WriteLine("No appliances found.");
             }
@@ -198,70 +199,70 @@ namespace AssignmentClasssesAndInheritance
             List<Appliance> list = ReadAppliances();
             switch (input)
             {
-                case "1": // Refrigerator
+                case "1": // refrigerator
                     Console.WriteLine("Enter number of doors (2, 3, or 4):");
                     string? doors = Console.ReadLine();
                     int doorsOutput = 0;
 
-                    if (int.TryParse(doors, out doorsOutput)) // Check if input is a number
+                    if (int.TryParse(doors, out doorsOutput)) // check if input is a number
                     {
                         List<Refrigerator> refrigerators = list.OfType<Refrigerator>().ToList();
                         List<Refrigerator> matchingRefrigerators = refrigerators.Where(r => r.Doors == doorsOutput).ToList();
 
-                        if (matchingRefrigerators.Count > 0)
+                        if (matchingRefrigerators.Count > 0) // if input matches the number of doors
                         {
                             Console.WriteLine("Matching refrigerators:");
-                            foreach (Refrigerator r in matchingRefrigerators)
+                            foreach (Refrigerator r in matchingRefrigerators) // display all matching refrigerators
                             {
                                 Console.WriteLine(r + "\n");
                             }
                         }
-                        else
+                        else // if input doesn't match
                         {
                             Console.WriteLine("No refrigerators found with " + doors + " doors.");
                         }
                     }
-                    else // If input is a string
+                    else // if input is a string
                     {
                         Console.WriteLine("Must be a number.");
                     }
                     break;
 
-                case "2": // Vacuum
+                case "2": // vacuum
                     Console.WriteLine("Enter battery voltage value. 18 V (low) or 24 V (high)");
                     string? voltage = Console.ReadLine();
                     int voltageOutput = 0;
 
-                    if (int.TryParse(voltage, out voltageOutput)) // Check if input is a number
+                    if (int.TryParse(voltage, out voltageOutput)) // check if input is a number
                     {
                         List<Vacuum> vacuums = list.OfType<Vacuum>().ToList();
                         List<Vacuum> matchingVacuums = vacuums.Where(v => v.BatteryVoltage == voltageOutput).ToList();
 
-                        if (matchingVacuums.Count > 0)
+                        if (matchingVacuums.Count > 0) // if input matches the battery voltage
                         {
                             Console.WriteLine("Matching vacuums:");
-                            foreach (Vacuum v in matchingVacuums)
+                            foreach (Vacuum v in matchingVacuums) // display all matching vacuums
                             {
                                 Console.WriteLine(v + "\n");
                             }
                         }
-                        else
+                        else // if it doesn't match
                         {
                             Console.WriteLine("No vacuums found with " + voltage + " V battery voltage.");
                         }
                     }
-                    else // If input is a string
+                    else // if input is a string
                     {
                         Console.WriteLine("Must be a number.");
-                    }                  
+                    }
                     break;
 
-                case "3": // Microwave
+                case "3": // microwave
                     Console.WriteLine("Room where the microwave will be installed: K (kitchen) or W (work site):");
                     string? room = Console.ReadLine()?.ToLower();
                     int roomOutput = 0;
-                   
-                    if (int.TryParse(room, out roomOutput))
+
+                    if (int.TryParse(room, out roomOutput)) // check if input is a number
                     {
                         Console.WriteLine("Must be letters.");
                         return;
@@ -270,26 +271,26 @@ namespace AssignmentClasssesAndInheritance
                     List<Microwave> microwaves = list.OfType<Microwave>().ToList();
                     List<Microwave> matchingMicrowaves = microwaves.Where(m => m.RoomType.ToLower() == room).ToList();
 
-                    if (matchingMicrowaves.Count > 0)
+                    if (matchingMicrowaves.Count > 0) // if input matches room type
                     {
                         Console.WriteLine("Matching microwaves:");
-                        foreach (Microwave m in matchingMicrowaves)
+                        foreach (Microwave m in matchingMicrowaves) // display all matching microwaves
                         {
                             Console.WriteLine(m + "\n");
                         }
                     }
-                    else
+                    else // if it doesn't match
                     {
                         Console.WriteLine("No microwaves found for room type " + room + ".");
                     }
                     break;
 
                 case "4": // Dishwasher
-                    Console.WriteLine("Enter the sound rating of the dishwasher: Qt (Quitest), Qr (Quiter), Qu (Quiet) or M (Moderate):");
+                    Console.WriteLine("Enter the sound rating of the dishwasher: Qt (Quietest), Qr (Quieter), Qu (Quiet) or M (Moderate):");
                     string? sound = Console.ReadLine()?.ToLower();
                     int soundOutput = 0;
 
-                    if (int.TryParse(sound, out soundOutput))
+                    if (int.TryParse(sound, out soundOutput)) // check if input is a number
                     {
                         Console.WriteLine("Must be letters.");
                         return;
@@ -298,21 +299,21 @@ namespace AssignmentClasssesAndInheritance
                     List<Dishwasher> dishwashers = list.OfType<Dishwasher>().ToList();
                     List<Dishwasher> matchingDishwashers = dishwashers.Where(d => d.SoundRating.ToLower() == sound).ToList();
 
-                    if (matchingDishwashers.Count > 0)
+                    if (matchingDishwashers.Count > 0) // if input matches the sound rating
                     {
                         Console.WriteLine("Matching dishwashers");
-                        foreach (Dishwasher d in matchingDishwashers)
+                        foreach (Dishwasher d in matchingDishwashers) // display all matching dishwashers
                         {
                             Console.WriteLine(d + "\n");
                         }
                     }
-                    else
+                    else // if input doesn't match
                     {
                         Console.WriteLine("No dishwashers found with sound rating " + sound + ".");
                     }
                     break;
 
-                default: // Error
+                default: // Error, input not an option
                     Console.WriteLine("Invalid option. Please enter a number between 1 and 4.");
                     break;
             }
@@ -321,48 +322,64 @@ namespace AssignmentClasssesAndInheritance
         public static void RandomAppliance()
         {
             Console.WriteLine("Enter number of appliances:");
-            int input = Convert.ToInt32(Console.ReadLine());
+            string? input = Console.ReadLine();
+            int output = 0;
 
-            List<Appliance> list = ReadAppliances();
-
-            if (list != null)
+            if (int.TryParse(input, out output)) // check if input is a number
             {
-                Random rand = new Random();
+                List<Appliance> list = ReadAppliances();
 
-                for (int i = 0; i < input; i++)
+                if (output > 0 && list.Count > 0) // if input is greater than 0 and has a matching object in list
                 {
-                    Appliance randomAppliance = list[rand.Next(0, list.Count)];
-                    Console.WriteLine(randomAppliance + "\n");
+                    Console.WriteLine("Random appliances:");
+                    Random rand = new Random();
+
+                    for (int i = 0; i < output; i++) // display number of random appliances according to input amount
+                    {
+                        Appliance randomAppliance = list[rand.Next(0, list.Count)];
+                        Console.WriteLine(randomAppliance + "\n");
+                    }
+
                 }
-
+                else // if input is not over 0
+                {
+                    Console.WriteLine("Must be over 0.");
+                }
             }
+            else // if input is a a string
+            {
+                Console.WriteLine("Must be a number.");
+            }        
         }
-
+     
         public static void SaveData(List<Appliance> list)
         {
-            StreamWriter sw = new StreamWriter(PATH);
+            using StreamWriter writer = new StreamWriter(PATH);
             foreach (Appliance a in list)
             {
+                // formatting for file
                 string line = $"{a.ItemNumber}{SEP}{a.Brand}{SEP}{a.Quantity}{SEP}{a.Wattage}{SEP}{a.Color}{SEP}{a.Price}";
-                if (a is Refrigerator r)
+
+                if (a is Refrigerator r) // formatting for refrigerators
                 {
-                    line += $"{SEP}{r.Doors}{SEP}{r.Height}{SEP}{r.Width}";
+                    line += $"{SEP}{r.Doors}{SEP}{r.Height}{SEP}{r.Width}{SEP}";
                 }
-                else if (a is Vacuum v)
+                else if (a is Vacuum v) // formatting for vacuums
                 {
-                    line += $"{SEP}{v.Grade}{SEP}{v.BatteryVoltage}";
+                    line += $"{SEP}{v.Grade}{SEP}{v.BatteryVoltage}{SEP}";
                 }
-                else if (a is Microwave m)
+                else if (a is Microwave m) // formatting for microwaves
                 {
-                    line += $"{SEP}{m.Capacity}{SEP}{m.RoomType}";
+                    line += $"{SEP}{m.Capacity}{SEP}{m.RoomType}{SEP}";
                 }
-                else if (a is Dishwasher d)
+                else if (a is Dishwasher d) // formatting for dishwashers
                 {
-                    line += $"{SEP}{d.Feature}{SEP}{d.SoundRating}";
+                    line += $"{SEP}{d.Feature}{SEP}{d.SoundRating}{SEP}";
                 }
-                sw.WriteLine(line);
+                writer.WriteLine(line);
             }
-            sw.Close();
+            writer.Close();
+            Console.WriteLine("Data has been saved.");
         }
     } // class
 } // namespace
