@@ -22,8 +22,11 @@ class Program
                 Appliance.Display();
                 break;
             case "4":
+                Appliance.RandomAppliance();
                 break;
             case "5":
+                List<Appliance> list = Appliance.ReadAppliances();
+                Appliance.SaveData(list);
                 break;
             default:
                 Console.WriteLine("Invalid option. Please try again.");
