@@ -51,7 +51,7 @@ namespace AssignmentClasssesAndInheritance
                 // fields [4] = Color
                 // fields [5] = Price
                 // fields [6] = Number of Doors, Grade, Capacity, Feature
-                // fields [7] = Height, Batter Voltage, Room Type, Sound Rating
+                // fields [7] = Height, Battery Voltage, Room Type, Sound Rating
                 // fields [8] = Width
                 Appliance? app = null;
                 if (fields[0].StartsWith("1")) // refrigerator
@@ -163,7 +163,7 @@ namespace AssignmentClasssesAndInheritance
             string? input = Console.ReadLine()?.ToLower();
             int output = 0;
 
-            if (int.TryParse(input, out output)) // check if input is a string
+            if (int.TryParse(input, out output)) // check if input is a number
             {
                 Console.WriteLine("Must be letters.");
                 return;
@@ -301,7 +301,7 @@ namespace AssignmentClasssesAndInheritance
 
                     if (matchingDishwashers.Count > 0) // if input matches the sound rating
                     {
-                        Console.WriteLine("Matching dishwashers");
+                        Console.WriteLine("Matching dishwashers:");
                         foreach (Dishwasher d in matchingDishwashers) // display all matching dishwashers
                         {
                             Console.WriteLine(d + "\n");
@@ -346,7 +346,7 @@ namespace AssignmentClasssesAndInheritance
                     Console.WriteLine("Must be over 0.");
                 }
             }
-            else // if input is a a string
+            else // if input is a string
             {
                 Console.WriteLine("Must be a number.");
             }        
